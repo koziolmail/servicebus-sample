@@ -1,0 +1,33 @@
+spring:
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        date-only-format: yyyy-MM-dd
+    cloud:
+        azure:
+            servicebus:
+                enabled: true
+                connection-string: @connectionString@
+            region: westeurope
+        stream:
+            function:
+                definition: availability
+            bindings:
+                availability-in-0:
+                    destination: availability_input_44441
+                availability-out-0:
+                    destination: availability_output_44441
+    lifecycle:
+        timeout-per-shutdown-phase: 1m
+
+logging:
+    file:
+        path: ${catalina.home:build}/logs/rzesa
+
+doz:
+    kamsoftId: 544445
+    pharmacyCkk: 44441
+    defaultUserId: 0
+    deviceId: doz.apteka44441
+
+server:
+    shutdown: graceful
